@@ -1,0 +1,19 @@
+{
+  "name": "create-move",
+  "version": "1.0.0",
+  "description": "A CLI to set up a Move project with Scaffold Move",
+  "main": "dist/cli.js",
+  "bin": {
+    "create-move": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.3"
+  }
+}
