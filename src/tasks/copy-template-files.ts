@@ -13,8 +13,8 @@ export async function copyTemplateFiles(options: Options, templateDir: string, t
     await copy(scaffoldMoveTemplatePath, targetDir, {
       clobber: false,
       filter: (fileName: string) => {
-        // You can add any filtering logic here if needed
-        return true;
+        // Ignore .git directory
+        return !fileName.includes('.git');
       },
     });
 

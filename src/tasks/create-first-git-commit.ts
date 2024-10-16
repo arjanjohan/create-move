@@ -1,11 +1,9 @@
 import { execa } from "execa";
 import { Options } from "../types";
-import path from "path";
-
-const foundryLibraries = ["foundry-rs/forge-std", "OpenZeppelin/openzeppelin-contracts", "gnsps/solidity-bytes-utils"];
 
 export async function createFirstGitCommit(targetDir: string, options: Options) {
   try {
+    await execa("git", ["init"], { cwd: targetDir });
     await execa("git", ["add", "-A"], { cwd: targetDir });
     await execa("git", ["commit", "-m", "Initial commit with 🏗️ Scaffold Move", "--no-verify"], { cwd: targetDir });
 

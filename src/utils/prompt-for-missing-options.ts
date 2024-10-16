@@ -6,7 +6,7 @@ const MOVE_TEMPLATES = {
   BASIC: "basic",
   DEFI: "defi",
   NFT: "nft",
-  TOKEN: "nft",
+  TOKEN: "token",
 };
 
 // default values for unspecified args
@@ -34,9 +34,9 @@ export async function promptForMissingOptions(
       message: "Which Move template do you want to use?",
       choices: [
         { name: "On-chain Bio (default)", value: MOVE_TEMPLATES.BASIC },
-        { name: "Defi", value: MOVE_TEMPLATES.DEFI },
-        { name: "NFT", value: MOVE_TEMPLATES.NFT },
-        { name: "Token", value: MOVE_TEMPLATES.TOKEN },
+        { name: "Defi (coming soon)", value: MOVE_TEMPLATES.DEFI, disabled: true },
+        { name: "NFT (coming soon)", value: MOVE_TEMPLATES.NFT, disabled: true },
+        { name: "Token (coming soon)", value: MOVE_TEMPLATES.TOKEN, disabled: true },
       ],
       default: MOVE_TEMPLATES.BASIC,
     },
@@ -47,7 +47,7 @@ export async function promptForMissingOptions(
   const mergedOptions: Options = {
     project: options.project ?? answers.project,
     install: options.install,
-    dev: options.dev ?? defaultOptions.dev
+    dev: options.dev ?? defaultOptions.dev,
   };
 
   return mergedOptions;
