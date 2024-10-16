@@ -1,19 +1,48 @@
 {
   "name": "create-move",
   "version": "1.0.0",
-  "description": "A CLI to set up a Move project with Scaffold Move",
+  "description": "Creata a Scaffold Move app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arjanjohan/create-move.git"
+  },
   "main": "dist/cli.js",
-  "bin": {
-    "create-move": "./dist/cli.js"
-  },
+  "type": "module",
+  "bin": "bin/create-move-dapp.js",
   "scripts": {
-    "build": "tsc"
+    "build": "rollup -c rollup.config.js",
+    "build:dev": "yarn build && rollup -c src/dev/rollup.config.js",
+    "cli": "node bin/create-move-dapp.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "changeset:release": "yarn build && changeset publish"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "cli",
+    "move",
+    "scaffold-move",
+    "aptos",
+    "movement"
+  ],
+  "author": "arjanjohan",
+  "license": "MIT",
   "devDependencies": {
+    "@types/inquirer": "^9.0.7",
     "@types/node": "^22.7.5",
+    "@types/ncp": "2.0.5",
+
     "typescript": "^5.6.3"
+  },
+  "packageManager": "yarn@1.22.22",
+  "dependencies": {
+    "@rollup/plugin-typescript": "^12.1.1",
+    "arg": "^5.0.2",
+    "chalk": "^5.3.0",
+    "execa": "^9.4.0",
+    "inquirer": "9.2.0",
+    "listr2": "^8.2.1",
+    "ncp": "^2.0.0",
+    "pkg-install": "^1.0.0",
+    "rollup": "^4.24.0",
+    "rollup-plugin-auto-external": "^2.0.0"
   }
 }
