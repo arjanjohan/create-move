@@ -7,6 +7,7 @@ const MOVE_TEMPLATES = {
   DEFI: "defi",
   NFT: "nft",
   TOKEN: "token",
+  RANDOM: "random",
 };
 
 // default values for unspecified args
@@ -34,9 +35,10 @@ export async function promptForMissingOptions(
       message: "Which Move template do you want to use?",
       choices: [
         { name: "On-chain Bio (default)", value: MOVE_TEMPLATES.BASIC },
-        { name: "Defi (coming soon)", value: MOVE_TEMPLATES.DEFI, disabled: true },
+        { name: "DeFi (coming soon)", value: MOVE_TEMPLATES.DEFI, disabled: true },
         { name: "NFT (coming soon)", value: MOVE_TEMPLATES.NFT, disabled: true },
         { name: "Token (coming soon)", value: MOVE_TEMPLATES.TOKEN, disabled: true },
+        { name: "Random (coming soon)", value: MOVE_TEMPLATES.RANDOM, disabled: true },
       ],
       default: MOVE_TEMPLATES.BASIC,
     },
