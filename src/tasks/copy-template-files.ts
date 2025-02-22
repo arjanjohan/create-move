@@ -1,26 +1,25 @@
 import fs from "fs";
 import path from "path";
-import { promisify } from "util";
-import ncp from "ncp";
+import { execa } from "execa";
 import { Options } from "../types";
 
-const copy = promisify(ncp);
-
-export async function copyTemplateFiles(options: Options, templateDir: string, targetDir: string) {
-  const scaffoldMoveTemplatePath = path.join(templateDir, "scaffold-move");
-
+export async function copyTemplateFiles(options: Options, _templateDir: string, targetDir: string) {
   try {
-    await copy(scaffoldMoveTemplatePath, targetDir, {
-      clobber: false,
-      filter: (fileName: string) => {
-        // Ignore .git directory
-        return !fileName.includes('.git');
-      },
-    });
+    // Clone the latest scaffold-move template from GitHub
+    await execa("git", [
+      "clone",
+      "--depth=1",
+      "https://github.com/arjanjohan/scaffold-move.git",
+      targetDir
+    ]);
 
-    console.log(`Successfully copied template files to ${targetDir}`);
+    // Remove the .git directory to start fresh
+    const gitDir = path.join(targetDir, ".git");
+    await fs.promises.rm(gitDir, { recursive: true, force: true });
+
+    console.log(`Successfully cloned template to ${targetDir}`);
   } catch (error) {
-    console.error("Error copying template files:", error);
+    console.error("Error cloning template:", error);
     throw error;
   }
 }

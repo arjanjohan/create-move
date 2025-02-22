@@ -31,7 +31,7 @@ export async function createProject(options: Options) {
         title: `🚀 Creating a new Scaffold Move app in ${chalk.green.bold(
           options.project,
         )}`,
-        task: () => copyTemplateFiles(options, templateDirectory, targetDirectory),
+        task: () => copyTemplateFiles(options, "", targetDirectory),
       },
       {
         title: `📦 Installing dependencies with yarn, this could take a while`,
