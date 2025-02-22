@@ -7,6 +7,7 @@ export default {
     dir: "dist",
     format: "es",
     sourcemap: true,
+    banner: '#! /usr/bin/env node',
   },
   plugins: [autoExternal(), typescript({ exclude: ["templates/**", "externalExtensions/**"] })],
 };
